@@ -1,0 +1,13 @@
+---
+- name: install some prereqs
+  dnf: name={{item}} state=latest
+  with_items:
+    - compton
+    - awesomewm
+  become: true
+
+- name: copy awesome configs
+  file: src=rc.lua dest=~/.config/awesomewm/rc.lua
+
+- name: copy xinitrc
+  file: src=xinit.rc dest=~/.xinitrc

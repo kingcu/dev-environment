@@ -1,0 +1,14 @@
+---
+- name: install some prereqs
+  dnf: name={{item}} state=latest
+  with_items:
+    - build-essential
+  become: true
+
+- name: setup xterm
+  file: src=Xresources dest=~/.Xresources
+
+- name: load up xresources
+  shell: xrdb -merge ~/.Xresources
+
+- name: load up vim configs

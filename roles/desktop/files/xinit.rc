@@ -1,0 +1,2 @@
+compton -b -c --backend glx --vsync opengl-swc
+xscreensaver &

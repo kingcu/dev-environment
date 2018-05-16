@@ -1,0 +1,25 @@
+---
+- name: install rwgps dev pre-reqs
+  dnf: name={{item}} state=latest
+  with_items:
+    - docker
+    - docker-compose
+  become: true
+
+- name: checkout ridewithgps repository
+  git: 
+    repo: https://github.com/ridewithgps/ridewithgps.git
+    dest: ~/work/ridewithgps
+    accept_hostkey: yes
+
+- name: checkout rwgps-ui repository
+  git: 
+    repo: https://github.com/ridewithgps/rwgps-ui.git
+    dest: ~/work/RWGPS-UI
+    accept_hostkey: yes
+
+- name: checkout rwgps-config repository
+  git: 
+    repo: https://github.com/ridewithgps/rwgps-config.git
+    dest: ~/work/RWGPS-Config
+    accept_hostkey: yes
